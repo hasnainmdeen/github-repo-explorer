@@ -1,8 +1,7 @@
-import session, { Session } from 'express-session';
-import { CustomSession } from '../types/types';  // assuming you followed the previous suggestion
+import session from 'express-session';
 
 const sessionMiddleware = session({
-    secret: 'your_secret_key',
+    secret: 'some_secret',
     resave: false,
     saveUninitialized: true,
 });

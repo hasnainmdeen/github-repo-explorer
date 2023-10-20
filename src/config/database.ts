@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import config from './config';
 
 export const connectToDatabase = async () => {
   try {
-    await mongoose.connect(config.mongo.url, { retryWrites: true, w: 'majority' });
+    await mongoose.connect(process.env.MONGODB_CONNECTION_STRING || '', { retryWrites: true, w: 'majority' });
     console.log('Connected to mongoDB.');
   } catch (error) {
     console.log('Unable to connect to MongoDB.');

@@ -3,7 +3,6 @@ import express from 'express';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpecs from './config/swaggerConfig';
-import config from './config/config';
 import sessionMiddleware from './middlewares/session';
 import authRoutes from './routes/authRoutes';
 import favoritesRoutes from './routes/favoritesRoutes';
@@ -13,7 +12,7 @@ import { connectToDatabase } from './config/database';
 
 dotenv.config();
 const app = express();
-const PORT = config.server.port;
+const PORT = process.env.PORT;
 
 connectToDatabase().then(() => {
     app.listen(PORT, () => {

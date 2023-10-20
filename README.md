@@ -1,6 +1,22 @@
 # GITHUB-REPO-EXPLORER
 
 GitHub Repo Explorer is a Node.js application that interacts with GitHub APIs to search for repositories, allowing reading a file from specific repository and manage favorites.
+This api is using mongodb atlas. The favorites are managed in 
+
+## Database
+
+This project uses MongoDB Atlas as its primary database to manage favorites.
+
+### Setting Up MongoDB Atlas
+
+1. Create an account on MongoDB Atlas (https://www.mongodb.com/cloud/atlas/register).
+2. Setup a new cluster.
+3. Obtain the connection string for your application.
+4. Copy the connection string to `.env` file
+
+MONGODB_CONNECTION_STRING=your_connection_string_here
+
+Note: Replace 'your_connection_string_here' with the actual connection string.
 
 
 ## Setting Up
@@ -11,7 +27,9 @@ GitHub Repo Explorer is a Node.js application that interacts with GitHub APIs to
 
 
 2. Configure environment variables:
-Update `.env` and fill in the necessary details.
+
+    Update `.env` and fill in the necessary details along with github CLIENT_ID and CLIENT_SECRET for OAuth. Sample `.env.example` is attached for reference.
+
 
 3. Start the server:
 

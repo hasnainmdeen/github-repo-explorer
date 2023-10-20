@@ -34,7 +34,7 @@ export const getAllFavorites = async (req: Request, res: Response) => {
     }
 };
 
-export const updateFavorite = async (req: Request, res: Response) => {
+export const updateFavoriteById = async (req: Request, res: Response) => {
     try {
         const favorite = await Favorite.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
         if (!favorite) {

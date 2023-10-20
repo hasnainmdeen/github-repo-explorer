@@ -1,5 +1,5 @@
 import { Favorite } from '../../models/favorites';
-import { createFavorite, getFavoriteById, getAllFavorites, updateFavorite, deleteFavoriteById } from '../../controllers/favoritesController';
+import { createFavorite, getFavoriteById, getAllFavorites, updateFavoriteById, deleteFavoriteById } from '../../controllers/favoritesController';
 import { Request, Response } from 'express';
 
 let mockRequest: Partial<Request>;
@@ -101,7 +101,7 @@ describe('getAllFavorites', () => {
 });
 
 
-describe('updateFavorite', () => {
+describe('updateFavoriteById', () => {
     it('should update a favorite and return 200 with the updated favorite', async () => {
         const mockFavorite = { _id: 'testId', githubId: 'testGithubId', repositoryName: 'updatedRepoName' };
         const mockFindByIdAndUpdate = jest.fn().mockResolvedValueOnce(mockFavorite);
@@ -109,7 +109,7 @@ describe('updateFavorite', () => {
         mockRequest.params = { id: 'testId' };
         mockRequest.body = { repositoryName: 'updatedRepoName' };
 
-        await updateFavorite(mockRequest as Request, mockResponse as Response);
+        await updateFavoriteById(mockRequest as Request, mockResponse as Response);
 
         expect(mockFindByIdAndUpdate).toHaveBeenCalledWith('testId', { repositoryName: 'updatedRepoName' }, { new: true, runValidators: true });
         expect(mockResponse.status).toHaveBeenCalledWith(200);
@@ -121,7 +121,7 @@ describe('updateFavorite', () => {
         (Favorite.findByIdAndUpdate as jest.Mock) = mockFindByIdAndUpdate;
         mockRequest.params = { id: 'testId' };
 
-        await updateFavorite(mockRequest as Request, mockResponse as Response);
+        await updateFavoriteById(mockRequest as Request, mockResponse as Response);
 
         expect(mockFindByIdAndUpdate).toHaveBeenCalled();
         expect(mockResponse.status).toHaveBeenCalledWith(404);
@@ -135,7 +135,7 @@ describe('updateFavorite', () => {
         mockRequest.params = { id: 'testId' };
         mockRequest.body = { repositoryName: 'updatedRepoName' };
 
-        await updateFavorite(mockRequest as Request, mockResponse as Response);
+        await updateFavoriteById(mockRequest as Request, mockResponse as Response);
 
         expect(mockFindByIdAndUpdate).toHaveBeenCalledWith('testId', { repositoryName: 'updatedRepoName' }, { new: true, runValidators: true });
         expect(mockResponse.status).toHaveBeenCalledWith(400);

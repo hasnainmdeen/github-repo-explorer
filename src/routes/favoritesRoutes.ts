@@ -1,5 +1,5 @@
 import express from 'express';
-import { createFavorite, getFavoriteById, getAllFavorites, updateFavorite, deleteFavoriteById } from '../controllers/favoritesController';
+import { createFavorite, getFavoriteById, getAllFavorites, updateFavoriteById, deleteFavoriteById } from '../controllers/favoritesController';
 
 const router = express.Router();
 
@@ -116,7 +116,7 @@ router.get('/favorites/:id', getFavoriteById);
  *       404:
  *         description: Favorite not found.
  */
-router.put('/favorites/:id', updateFavorite);
+router.put('/favorites/:id', updateFavoriteById);
 
 /**
  * @swagger
