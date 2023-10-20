@@ -4,7 +4,7 @@ import { CustomSession } from '../types/types';
 
 export const searchRepos = async (req: Request, res: Response) => {
     
-    const query: string = req.query.q as string; // This is the search query string from the client
+    const query: string = req.query.q as string;
     const userToken: string | undefined = (req.session as CustomSession).githubToken;
 
     if (!userToken) {
@@ -30,8 +30,7 @@ export const searchRepos = async (req: Request, res: Response) => {
 };
 
 export const getRepoFile = async (req: Request, res: Response) => {
-    const owner = req.params.owner;
-    const repo = req.params.repo;
+    const { owner, repo } = req.params;
     const pathArray = req.params[0]?.split('/') || [];
     const path = pathArray.join('/');
 
