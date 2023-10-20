@@ -30,7 +30,6 @@ export const searchRepos = async (req: Request, res: Response) => {
 };
 
 export const getRepoFile = async (req: Request, res: Response) => {
-  console.log(req.params);
     const owner = req.params.owner;
     const repo = req.params.repo;
     const pathArray = req.params[0]?.split('/') || [];
@@ -42,7 +41,6 @@ export const getRepoFile = async (req: Request, res: Response) => {
 
     const GITHUB_API_URL = `${process.env.GITHUB_API_URL}/repos/${owner}/${repo}/contents/${path}`;
 
-    // Authentication
     const userToken: string | undefined = (req.session as CustomSession).githubToken;
     if (!userToken) {
         return res.status(401).json({ error: 'User not authenticated' });
@@ -61,7 +59,6 @@ export const getRepoFile = async (req: Request, res: Response) => {
         res.send(fileContent);
 
     } catch (error) {
-        //console.log(error);
         if (error instanceof Error && 'response' in error) {
             const axiosError = error as any; // This type assertion is safe now due to the check above
             if (axiosError.response && axiosError.response.status === 404) {

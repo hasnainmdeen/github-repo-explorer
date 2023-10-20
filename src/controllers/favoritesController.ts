@@ -4,7 +4,6 @@ import { Favorite } from '../models/favorites';
 
 export const createFavorite = async (req: Request, res: Response) => {
     try {
-        console.log('favortie exists!', req);
         const favorite = new Favorite(req.body);
         await favorite.save();
         res.status(201).send(favorite);
@@ -36,7 +35,6 @@ export const getAllFavorites = async (req: Request, res: Response) => {
 
 export const updateFavorite = async (req: Request, res: Response) => {
     try {
-        console.log('favortie exists!');
         const favorite = await Favorite.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
         if (!favorite) {
             return res.status(404).send();
