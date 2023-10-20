@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import { CustomSession } from '../types/types';
+import { STATUS_CODE } from '../utils/constants';
 
 const { GITHUB_LOGIN_URL, CLIENT_ID, CLIENT_SECRET } = process.env;
 
@@ -18,9 +19,9 @@ export const githubCallback = async (req: Request, res: Response) => {
             (req.session as CustomSession).githubToken = accessToken;
             res.send('Authentication successful!');
         } else {
-            res.status(400).send('Error getting access token');
+            res.status(STATUS_CODE.BAD_REQUEST).send('Error getting access token');
         }
     } catch (err) {
-        res.status(500).send('Error during authentication');
+        res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).send('Error during authentication');
     }
 };
