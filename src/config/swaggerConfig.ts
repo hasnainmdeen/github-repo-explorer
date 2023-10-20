@@ -8,7 +8,7 @@ const options = {
       version: '1.0.0',
     },
   },
-  // Path to the API docs, i.e. - where to read the JSDoc comments from.
+
   apis: ['./src/routes/*.ts', './src/controllers/*.ts'], 
 };
 

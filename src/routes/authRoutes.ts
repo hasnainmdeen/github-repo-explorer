@@ -8,6 +8,8 @@ const router = express.Router();
  * /auth/github:
  *   get:
  *     summary: Authenticate via GitHub.
+ *     tags:
+ *       - Authentication
  *     responses:
  *       200:
  *         description: Redirect to GitHub for authentication.

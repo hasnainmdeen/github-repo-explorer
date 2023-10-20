@@ -6,15 +6,16 @@ const router = express.Router();
  * @swagger
  * /:
  *   get:
- *     summary: Redirects to GitHub authentication.
+ *     summary: Root endpoint to redirect to the API documentation.
+ *     description: This endpoint redirects users to the API documentation when accessed.
  *     tags:
- *       - Authentication
+ *       - General
  *     responses:
  *       302:
- *         description: Redirects to the GitHub authentication page.
+ *         description: Successfully redirected to the API documentation at /api-doc.
  */
 router.get('/', (req, res) => {
-    res.redirect('/auth/github');
+    res.redirect('/api-doc');
 });
 
 export default router;
